@@ -1,17 +1,18 @@
-// console.log("one");
+const { readFile, writeFile } = require("fs").promises;
 
-// setTimeout(() => {
-//   console.log("first");
-// }, 2001);
+const start = async () => {
+  try {
+    const first = await readFile("./content/first.txt", "utf8");
+    const second = await readFile("./content/second.txt", "utf8");
+    await writeFile(
+      "./content/result-mind-grenade",
+      `This is amazinggg! ${first} ${second}`,
+      { flag: "a" }
+    );
+    console.log(first, second);
+  } catch (error) {
+    console.log(err);
+  }
+};
 
-// setTimeout(() => {
-//   console.log("second");
-// }, 2000);
-
-// console.log("third");
-
-const os = require("os");
-// method returns the system uptime in seconds
-setInterval(() => {
-  console.log(`The system uptime is ${os.uptime()} seconds`);
-}, 1000);
+start();
